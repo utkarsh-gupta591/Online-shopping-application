@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Toy Store</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/initializeToys.js"></script>
+        <script type="text/javascript" src="js/initializeClothes.js"></script>
+        <style>
+            .navbar
+            {
+                position:fixed;
+                width:100%;
+                top:0;
+                z-index:2;
+            }
+            #userNavigation ul
+            {
+                list-style:none;
+            }
+            #userNavigation ul li
+            {
+                float:right;
+                padding-left:5px;
+                padding-right:5px;
+                padding-top:10px;
+                padding-bottom:10px;
+            }
+            #userNavigation ul li a
+            {
+                text-decoration:none;
+                color:white;
+            }
+            .button {
+                background-color: #4d88ff;
+                border: none;
+                color: white;
+                padding-top: 4px;
+                padding-bottom: 4px;
+                padding-left: 12px;
+                padding-right: 12px;
+                text-align: center;
+                display: inline-block;
+                font-size: 1rem;
+                cursor: pointer;
+                border-radius:4px;
+            }
+            #websiteName
+            {
+                font-size:26px;
+                font-family:"Comic Sans MS", cursive, sans-serif;
+                font-weight:bold;
+                color:#6699ff;
+            }
+            #mainDiv
+            {
+                background-color:white;
+                width:300px ;
+                margin-left:auto;
+                margin-right:auto;
+                padding-left:5px;
+                padding-right:5px;
+                padding-top:15px;
+                padding-bottom:15px;
+                margin-top:90px;
+                border-radius:5px;
+            }
+            #placeOrderButton
+            {
+                text-decoration:none;
+                border:none;
+                outline:none;
+                background-color: #33cccc;
+                color: white;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                padding-left: 18px;
+                padding-right: 18px;
+                text-align: center;
+                font-size: 1rem;
+                cursor: pointer;
+                border-radius:4px;
+            }
+            @media only screen and (max-width: 992px) {
+                #websiteName
+                {
+                    margin-left: 8px;
+                    margin-right:auto;
+                }
+            }
+        </style>
+        <script>
+            window.onload = function () {
+                if (window.innerWidth <= 567)
+                {
+                    var viewCartButton = document.getElementById("viewCartButton");
+                    viewCartButton.classList.remove("button");
+                    viewCartButton.classList.add("nav-link");
+                    viewCartButton.parentNode.classList.add("nav-item");
+                    var navbarNav = document.getElementsByClassName("navbar-nav")[0];
+                    var dropdownDivider = document.getElementsByClassName("dropdown-divider")[0];
+                    navbarNav.insertBefore(viewCartButton.parentNode, dropdownDivider);/*by using this method we are moving viewCartButton with li*/
+                }
+            };
+            window.onresize = function () {
+                if (window.innerWidth <= 567)
+                {
+                    var viewCartButton = document.getElementById("viewCartButton");
+                    viewCartButton.classList.remove("button");
+                    viewCartButton.classList.add("nav-link");
+                    viewCartButton.parentNode.classList.add("nav-item");
+                    var navbarNav = document.getElementsByClassName("navbar-nav")[0];
+                    var dropdownDivider = document.getElementsByClassName("dropdown-divider")[0];
+                    navbarNav.insertBefore(viewCartButton.parentNode, dropdownDivider);
+                }
+                if (window.innerWidth > 567)
+                {
+                    var viewCartButton = document.getElementById("viewCartButton");
+                    var userNavigation = document.getElementById("userNavigation");
+                    viewCartButton.parentNode.classList.remove("nav-item");
+                    viewCartButton.classList.remove("nav-link");
+                    viewCartButton.classList.add("button");
+                    userNavigation.children[0].appendChild(viewCartButton.parentNode);/*by using this method we are moving viewCartButton with li*/
+                }
+            };
+            function emptyCart()
+            {
+                var db = openDatabase('kidsstoredatabase', '1.0', 'Kids clothes and toys store DB', 2 * 1024 * 1024);
+                db.transaction(function (tx) {
+                    tx.executeSql('delete from cart', [], function (tx, result) {
+                    }, function (transaction, error) {
+                        alert("error " + error);
+                    });
+                }, null);
+            }// emptycart ends
+            function placeOrder()
+            {
+                emptyCart();
+                alert("Order placed!");
+            }
+        </script>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#e6e6e6;">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a id="websiteName" class="navbar-brand">KIDS STORE</a>
+            <div class="collapse navbar-collapse" id="navbarNav" style="background-color:#e6e6e6;">
+                <ul class="navbar-nav">
+
+                    <div class="dropdown-divider"></div>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="dropdown_target" href="#">Boys</a>
+                        <div class="dropdown-menu" style="background-color:#f2f2f2;" aria-labelledby="dropdown_target">
+                            <a class="dropdown-item" href="boysclothes.html?category=t-shirts">T-Shirts</a>
+                            <a class="dropdown-item" href="boysclothes.html?category=polo shirts">Polo Shirts</a>
+                            <a class="dropdown-item" href="boysclothes.html?category=shorts">Shorts</a>
+                            <a class="dropdown-item" href="boysclothes.html?category=nightwear">Nightwear</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="dropdown_target" href="#">Girls</a>
+                        <div class="dropdown-menu" style="background-color:#f2f2f2;" aria-labelledby="dropdown_target">
+                            <a class="dropdown-item" href="girlsclothes.html?category=girls frocks">Frocks</a>
+                            <a class="dropdown-item" href="girlsclothes.html?category=girls tops">Tops</a>
+                            <a class="dropdown-item" href="girlsclothes.html?category=girls jeans">Jeans</a>
+                            <a class="dropdown-item" href="girlsclothes.html?category=girls winterwear">Winterwear</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="dropdown_target" href="#">Toys</a>
+                        <div class="dropdown-menu" style="background-color:#f2f2f2;" aria-labelledby="dropdown_target">
+                            <a class="dropdown-item" href="toys.html?category=action figures">Action Figures</a>
+                            <a class="dropdown-item" href="toys.html?category=dolls, playsets and accessories">Dolls, Playsets & Accessories</a>
+                            <a class="dropdown-item" href="toys.html?category=guns and bullets">Guns and Bullets</a>
+                            <a class="dropdown-item" href="toys.html?category=cars and tracks">Cars & Tracks</a>
+                        </div>
+                    </li>
+                </ul>
+            </div><!-- navbarNav ends -->
+            <div id="userNavigation">
+                <ul>
+                    <li style="display:block;"><a href="viewcart.html" id="viewCartButton" class="button">View Cart</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div id="mainDiv">
+            <h5 style="text-align:center">Please enter delivery address</h5>
+            <br>
+<form onsubmit="placeOrder()">
+<div class="form-group">
+<lable for="name">Enter name:</label>
+<input type="text" id="name" name="name" class="form-control" placeholder="Enter name" required>
+</div>
+<div class="form-group">
+ <lable for="name">Mobile number:</label>
+<input type="text" id="mobileNumber" name="mobileNumber" class="form-control" placeholder="Enter mobile number" required>
+</div>
+<div class="form-group">
+<lable for="pincode">Pincode:</label>
+<input type="text" id="pincode" name="pincode" class="form-control" placeholder="Enter pincode" required>
+</div>
+<div class="form-group">
+<lable for="houseNumber">House no., Building name:</label>
+<input type="text" id="houseNumber" name="houseNumber" class="form-control" placeholder="Enter house number" required>
+</div>
+<div class="form-group">
+<lable for="area">Area, Colony, Street:</label>
+<input type="text" id="area" name="area" class="form-control" placeholder="Enter area" required>
+</div>
+<div class="form-group">
+<lable for="city">City:</label>
+<input type="text" id="city" name="city" class="form-control" placeholder="Enter city" required>
+</div>
+<div class="form-group">
+<lable for="state">State:</label>
+<input type="text" id="state" name="state" class="form-control" placeholder="Enter state" required>
+</div>
+<center><button id="placeOrderButton" type="submit">Deliver to this address</button>
+</center>
+</form>
+       </div><!-- mainDiv ends -->
+    </body>
+</html>

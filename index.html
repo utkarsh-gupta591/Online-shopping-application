@@ -1,0 +1,636 @@
+<!Doctype HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/all.css">
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/popper.min.js"></script>
+        <style>
+            .card
+            {
+                border:none;
+                width:260px;
+            }
+            .navbar
+            {
+                position:fixed;
+                width:100%;
+                top:0;
+                z-index:1;
+            }
+            #boysSection
+            {
+                background-color:#f0f0f5;
+                box-shadow: 0px 0px 6px 4px #ccc;
+                padding:20px;
+            }
+            #girlsSection
+            {
+                background-color:#e6f0ff;
+                box-shadow: 0px 0px 6px 4px #ccc;
+                padding:20px;
+            }
+            @media only screen and (max-width:576px)
+            {
+                #boysSection
+                {
+                    padding-left:10px;
+                    padding-right:10px;
+                }
+                #girlsSection
+                {
+                    padding-left:10px;
+                    padding-right:10px;
+                }
+                .card
+                {
+                    border:none;
+                    width:160px;
+                }
+            }
+            #boysSection .button
+            {
+                color:white;
+                font-family: "Comic Sans MS", cursive, sans-serif;
+                font-size:20px;
+                font-weight:bold;
+                text-align:center;
+                padding-top:10px;
+                padding-bottom:10px;
+                background-color:#8585ad;
+            }
+            #girlsSection .button
+            {
+                color:white;
+                font-family: "Comic Sans MS", cursive, sans-serif;
+                font-size:20px;
+                font-weight:bold;
+                text-align:center;
+                padding-top:10px;
+                padding-bottom:10px;
+                background-color:#4da6ff;
+            }
+            .card a
+            {
+                text-decoration:none;
+            }
+            .content
+            {
+                border:none;
+                padding:5px;
+                width:auto;
+                height:80px;
+            }
+            .imgdiv
+            {
+                border:none;
+                width:100%;
+                height:auto;
+            }
+            .imgdiv img
+            {
+                width:100%;
+                height:auto;
+            }
+            .product-container
+            {
+                border:none;
+                width:250px;
+                height:auto;
+                margin-left:auto;
+                margin-right:auto;
+            }
+            .product-container a
+            {
+                text-decoration:none;
+                color:black;
+            }
+            #div1
+            {
+                box-shadow: 0px 1px 10px 4px #ffb380;
+                border:none;
+                background-color:#ffe0cc;
+                padding-top:20px;
+                padding-bottom:20px;
+                padding-left:30px;
+                padding-right:30px;
+            }
+            #div2
+            {
+                box-shadow: 0px 1px 8px 3px #ffb3da;
+                border:none;
+                background-color:#ffe6f3;
+                padding-top:20px;
+                padding-bottom:20px;
+                padding-left:30px;
+                padding-right:30px;
+            }
+            #div3
+            {
+                box-shadow: 0px 1px 9px 5px #b3c4ff;
+                border:none;
+                background-color:#ccd8ff;
+                padding-top:20px;
+                padding-bottom:20px;
+                padding-left:30px;
+                padding-right:30px;
+            }
+            #div4
+            {
+                box-shadow: 0px 1px 9px 5px #a1c0de;
+                border:none;
+                background-color:#c6d9eb;
+                padding-top:20px;
+                padding-bottom:20px;
+                padding-left:30px;
+                padding-right:30px;
+            }
+            @media only screen and (max-width:576px)
+            {
+                #div3,#div4,div2
+                {
+                    padding-left:10px;
+                    padding-right:10px;
+                }
+                .product-container
+                {
+                    border:none;
+                    width:160px;
+                    height:auto;
+                    margin-top:10px;
+                    margin-bottom:10px;
+                }
+            }
+            #userNavigation ul
+            {
+                list-style:none;
+            }
+            #userNavigation ul li
+            {
+                float:right;
+                padding-left:5px;
+                padding-right:5px;
+                padding-top:10px;
+                padding-bottom:10px;
+            }
+            #userNavigation ul li a
+            {
+                text-decoration:none;
+                color:white;
+            }
+            #userNavigation .button {
+                background-color: #4d88ff;
+                border: none;
+                color: white;
+                padding-top: 4px;
+                padding-bottom: 4px;
+                padding-left: 12px;
+                padding-right: 12px;
+                text-align: center;
+                display: inline-block;
+                font-size: 1rem;
+                cursor: pointer;
+                border-radius:4px;
+            }
+            #websiteName
+            {
+                font-size:26px;
+                font-family:"Comic Sans MS", cursive, sans-serif;
+                font-weight:bold;
+                color:#6699ff;
+            }
+            footer
+            {
+                background-color:#2952a3;
+                padding-top:10px;
+                padding-bottom:20px;
+                color:white;
+            }
+            footer div img
+            {
+                margin-left:4px;
+                margin-right:4px;
+                margin-top:3px;
+                margin-bottom:3px;
+            }
+            footer div i
+            {
+                margin:20px;
+            }
+            @media only screen and (max-width:992px)
+            {
+                #websiteName
+                {
+                    margin-left: 8px;
+                    margin-right:auto;
+                }
+            }
+            @media only screen and (max-width:480px)
+            {
+                #boysSection
+                {
+                    padding-left:8px;
+                    padding-right:8px;
+                }
+                #girlsSection
+                {
+                    padding-left:8px;
+                    padding-right:8px;
+                }
+                .card
+                {
+                    border:none;
+                    width:140px;
+                }
+                h2
+                {
+                    font-size:26px;
+                }
+                #boysSection .button,#girlsSection .button
+                {
+                    font-size:18px;
+                    padding-top:6px;
+                    padding-bottom:6px;
+                }
+                #websiteName
+                {
+                    font-size:20px;
+                }
+                .navbar
+                {
+                    padding-left:8px;
+                }
+                .product-container
+                {
+                    width:130px;
+                }
+                #div1,#div2,#div3,#div4
+                {
+                    padding-right:10px;
+                    padding-left:10px;
+                }
+                .content
+                {
+                    height:120px;
+                }
+                .navbar
+                {
+                    padding-left:8px;
+                }
+            }
+        </style>
+        <script>
+            window.onload = function () {
+                if (window.innerWidth <= 567)
+                {
+                    var viewCartButton = document.getElementById("viewCartButton");
+                    viewCartButton.classList.remove("button");
+                    viewCartButton.classList.add("nav-link");
+                    viewCartButton.parentNode.classList.add("nav-item");
+                    var navbarNav = document.getElementsByClassName("navbar-nav")[0];
+                    var dropdownDivider = document.getElementsByClassName("dropdown-divider")[0];
+                    navbarNav.insertBefore(viewCartButton.parentNode, dropdownDivider);/*by using this method we are moving viewCartButton with li*/
+                }
+            };
+            window.onresize = function () {
+                if (window.innerWidth <= 567)
+                {
+                    var viewCartButton = document.getElementById("viewCartButton");
+                    viewCartButton.classList.remove("button");
+                    viewCartButton.classList.add("nav-link");
+                    viewCartButton.parentNode.classList.add("nav-item");
+                    var navbarNav = document.getElementsByClassName("navbar-nav")[0];
+                    var dropdownDivider = document.getElementsByClassName("dropdown-divider")[0];
+                    navbarNav.insertBefore(viewCartButton.parentNode, dropdownDivider);
+                }
+                if (window.innerWidth > 567)
+                {
+                    var viewCartButton = document.getElementById("viewCartButton");
+                    var userNavigation = document.getElementById("userNavigation");
+                    viewCartButton.parentNode.classList.remove("nav-item");
+                    viewCartButton.classList.remove("nav-link");
+                    viewCartButton.classList.add("button");
+                    userNavigation.children[0].appendChild(viewCartButton.parentNode);/*by using this method we are moving viewCartButton with li*/
+                }
+            };
+        </script>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#e6e6e6;">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a id="websiteName" class="navbar-brand">KIDS STORE</a>
+            <div class="collapse navbar-collapse" id="navbarNav" style="background-color:#e6e6e6;">
+                <ul class="navbar-nav">
+
+                    <div class="dropdown-divider"></div>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="dropdown_target" href="#">Boys</a>
+                        <div class="dropdown-menu" style="background-color:#f2f2f2;" aria-labelledby="dropdown_target">
+                            <a class="dropdown-item" href="boysclothes.html?category=t-shirts">T-Shirts</a>
+                            <a class="dropdown-item" href="boysclothes.html?category=polo shirts">Polo Shirts</a>
+                            <a class="dropdown-item" href="boysclothes.html?category=shorts">Shorts</a>
+                            <a class="dropdown-item" href="boysclothes.html?category=nightwear">Nightwear</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="dropdown_target" href="#">Girls</a>
+                        <div class="dropdown-menu" style="background-color:#f2f2f2;" aria-labelledby="dropdown_target">
+                            <a class="dropdown-item" href="girlsclothes.html?category=girls frocks">Frocks</a>
+                            <a class="dropdown-item" href="girlsclothes.html?category=girls tops">Tops</a>
+                            <a class="dropdown-item" href="girlsclothes.html?category=girls jeans">Jeans</a>
+                            <a class="dropdown-item" href="girlsclothes.html?category=girls winterwear">Winterwear</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="dropdown_target" href="#">Toys</a>
+                        <div class="dropdown-menu" style="background-color:#f2f2f2;" aria-labelledby="dropdown_target">
+                            <a class="dropdown-item" href="toys.html?category=action figures">Action Figures</a>
+                            <a class="dropdown-item" href="toys.html?category=dolls, playsets and accessories">Dolls, Playsets & Accessories</a>
+                            <a class="dropdown-item" href="toys.html?category=guns and bullets">Guns and Bullets</a>
+                            <a class="dropdown-item" href="toys.html?category=cars and tracks">Cars & Tracks</a>
+                        </div>
+                    </li>
+                </ul>
+
+            </div><!-- navbarNav ends -->
+            <div id="userNavigation">
+                <ul>
+                    <li style="display:block;"><a href="viewcart.html" id="viewCartButton" class="button">View Cart</a></li>
+                </ul>
+            </div>
+        </nav>
+        <br>
+
+        <div style="width:95%;margin:auto;margin-top:70px;">
+            <h2 style="text-align:center;">CLOTHES</h2>
+            <br>
+            <div id="boysSection">
+                <h2>Boys Section</h2>
+                <div class="d-flex justify-content-around flex-wrap">
+                    <div class="card my-2">
+                        <img class="card-img-top" src="img\boys t-shirt.jpg" alt="T-Shirt">
+                        <a href="boysclothes.html?category=t-shirts" class="button">T-Shirts</a>
+                    </div><!-- card ends here -->
+                    <div class="card my-2">
+                        <img class="card-img-top" src="img\boys shorts.jpg" alt="Short">
+                        <a href="boysclothes.html?category=shorts" class="button">Shorts</a>
+                    </div><!-- card ends here -->
+                    <div class="card my-2">
+                        <img class="card-img-top" src="img\polo-shirt.jpg" alt="Polo Shirt">
+                        <a href="boysclothes.html?category=polo shirts" class="button">Polo Shirts</a>
+                    </div><!-- card ends here -->
+                    <div class="card my-2">
+                        <img class="card-img-top" src="img\boys nightwear.jpg" alt="Nightwear">
+                        <a href="boysclothes.html?category=nightwear" class="button">Nightwear</a>
+                    </div><!-- card ends here -->
+                </div><!-- flex div ends -->
+            </div><!-- boys section ends -->
+            <br><br>
+            <div id="girlsSection">
+                <h2>Girls Section</h2>
+                <div class="d-flex justify-content-around flex-wrap">
+                    <div class="card my-2">
+                        <img class="card-img-top" src="img\girls tops.jpg">
+                        <a href="girlsclothes.html?category=girls tops" class="button">Tops</a>
+                    </div><!-- card ends here -->
+                    <div class="card my-2">
+                        <img class="card-img-top" src="img\girls frock.jpg">
+                        <a href="girlsclothes.html?category=girls frocks" class="button">Frocks</a>
+                    </div><!-- card ends here -->
+                    <div class="card my-2">
+                        <img class="card-img-top" src="img\girls winterwear.jpg">
+                        <a href="girlsclothes.html?category=girls winterwear" class="button">Winterwear</a>
+                    </div><!-- card ends here -->
+                    <div class="card my-2">
+                        <img class="card-img-top" src="img\girls jeans.jpg">
+                        <a href="girlsclothes.html?category=girls jeans" class="button">Jeans</a>
+                    </div><!-- card ends here -->
+                </div><!-- flex div ends -->
+            </div><!-- girls section ends -->
+            <br><br>
+
+            <h2 style="text-align:center">TOYS</h2>
+            <br>
+            <div id="div3" class="mb-5">
+                <h2>Guns and Bullets</h2>
+                <div class="d-flex justify-content-around flex-wrap">
+                    <div class="product-container">
+                        <a href="toys.html?category=guns and bullets">
+                            <div class="imgdiv">
+                                <img src="img\guns and bullets\nerf_n-strike_elite_stryfe_blaster_1.jpg">
+                            </div>
+                            <div class="content">
+                                <p>Nerf N-strike Elite Stryfe Blaster</p>
+                            </div>
+                        </a>
+                    </div><!-- product-container ends -->
+                    <div class="product-container">
+                        <a href="toys.html?category=guns and bullets">
+                            <div class="imgdiv">
+                                <img src="img\guns and bullets\nerf_n-strike_elite_12_dart_refill_1.jpg">
+                            </div>
+                            <div class="content">
+                                <p>Nerf N-Strike Elite 12 Dart Refill</p>
+                            </div>
+                        </a>
+                    </div><!-- product-container ends -->
+                    <div class="product-container">
+                        <a href="toys.html?category=guns and bullets">
+                            <div class="imgdiv">
+                                <img src="img\guns and bullets\nerf_31-piece_alpha_strike_mission_ops_set_-1.jpg">
+                            </div>
+                            <div class="content">
+                                <p>Nerf 31-Piece Alpha Strike Mission Ops Set</p>
+                            </div>
+                        </a>
+                    </div><!-- product-container ends -->
+                    <div class="product-container">
+                        <a href="toys.html?category=guns and bullets">
+                            <div class="imgdiv">
+                                <img src="img\guns and bullets\n-strike_elite_rough_cut_2x4_blaster_1.jpg">
+                            </div>
+                            <div class="content">
+                                <p>Nerf N-Strike Elite Stryfe Blaster</p>
+                            </div>
+                        </a>
+                    </div><!-- product-container ends -->
+                </div><!-- d-flex ends -->
+            </div><!-- div3 ends -->
+
+            <div id="div1" class="mb-5">
+                <h2>Cars & Tracks</h2>
+
+                <div class="d-flex justify-content-around flex-wrap">
+                    <div class="product-container">
+                        <a href="toys.html?category=cars and tracks">
+                            <div class="imgdiv">
+                                <img src="img\cars and tracks\avengers_age_of_ultron_cycle_blast_quinjet_vehicle_multi_color_1.jpg">
+                            </div>
+                            <div class="content">
+                                <p>Avengers Age Of Ultron Cycle Blast Quinjet Vehicle Multi Color</p>
+                            </div>
+                        </a>
+                    </div><!-- product-container ends -->
+                    <div class="product-container">
+                        <a href="toys.html?category=cars and tracks">
+                            <div class="imgdiv">
+                                <img src="img\cars and tracks\hot_wheels_mega_hauler_1.jpg" alt="Hot Wheels Mega Hauler">
+                            </div>
+                            <div class="content">
+                                <p>Hot Wheels Mega Hauler</p>
+                            </div>
+                        </a>
+                    </div><!-- product-container ends -->
+                    <div class="product-container">
+                        <a href="toys.html?category=cars and tracks">
+                            <div class="imgdiv">
+                                <img src="img\cars and tracks\thomas_friends_thomas_friends_birthday_wish_thomas_train_playset_1.jpg">
+                            </div>
+                            <div class="content">
+                                <p>Thomas & Friends Birthday Wish Thomas Train Playset</p>
+                            </div>
+                        </a>
+                    </div><!-- product-container ends -->
+                    <div class="product-container">
+                        <a href="toys.html?category=cars and tracks">
+                            <div class="imgdiv">
+                                <img src="img\cars and tracks\turbos_124_remote_control_benz_sls_licensed_toys_car_red_1.jpg">
+                            </div>
+                            <div class="content">
+                                <p>TurboS Remote Control Benz SLS Licensed Toys Car Red</p>
+                            </div>
+                        </a>
+                    </div><!-- product-container ends -->
+                </div><!-- d-flex ends -->
+            </div><!-- div1 ends -->
+
+            <div id="div2" class="mb-5">
+                <h2>Dolls, Playsets & Accessories</h2>
+                <div class="d-flex justify-content-around flex-wrap">
+                    <div class="product-container">
+                        <a href="toys.html?category=dolls, playsets and accessories">
+                            <div class="imgdiv">
+                                <img src="img\dolls, playsets and accessories\barbie_salon_doll_accessories_-_blonde_1.jpg">
+                            </div>
+                            <div class="content">
+                                <p>Barbie Salon Doll Accessories - Blonde</p>
+                            </div>
+                        </a>
+                    </div><!-- product-container ends -->
+                    <div class="product-container">
+                        <a href="toys.html?category=dolls, playsets and accessories">
+                            <div class="imgdiv">
+                                <img src="img\dolls, playsets and accessories\barbie_ultimate_closet_doll_and_accessory_1.jpg">
+                            </div>
+                            <div class="content">
+                                <p>Barbie Ultimate Closet Doll and Accessory</p>
+                            </div>
+                        </a>
+                    </div><!-- product-container ends -->
+                    <div class="product-container">
+                        <a href="toys.html?category=dolls, playsets and accessories">
+                            <div class="imgdiv">
+                                <img src="img\dolls, playsets and accessories\barbie_dreamtopia_royal_ball_princess_doll_1.jpg">
+                            </div>
+                            <div class="content">
+                                <p>Barbie Dreamtopia Royal Ball Princess Doll</p>
+                            </div>
+                        </a>
+                    </div><!-- product-container ends -->
+                    <div class="product-container">
+                        <a href="toys.html?category=dolls, playsets and accessories">
+                            <div class="imgdiv">
+                                <img src="img\dolls, playsets and accessories\disney_be_bright_be_bold_rapunzel_fashion_doll.jpg">
+                            </div>
+                            <div class="content">
+                                <p>Disney Be Bright Be Bold Rapunzel Fashion Doll</p>
+                            </div>
+                        </a>
+                    </div><!-- product-container ends -->
+                </div><!-- d-flex ends -->
+            </div><!-- div2 ends -->
+
+            <div id="div4" class="mb-5">
+                <h2>Action Figures</h2>
+                <div class="d-flex justify-content-around flex-wrap">
+                    <div class="product-container">
+                        <a href="toys.html?category=action figures">
+                            <div class="imgdiv">
+                                <img src="img\action figures\toy_story_buzz_lightyear_figure-1.jpg" alt="Toy Story Buzz Lightyear Figure">
+                            </div>
+                            <div class="content">
+                                <p>Toy Story Buzz Lightyear Figure</p>
+                            </div>
+                        </a>
+                    </div><!-- product-container ends -->
+                    <div class="product-container">
+                        <a href="toys.html?category=action figures">
+                            <div class="imgdiv">
+                                <img src="img\action figures\batman_missions_true-moves_figure_batman-1.jpg" alt="Batman Missions True-Moves Figure Batman">
+                            </div>
+                            <div class="content">
+                                <p>Batman Missions True-Moves Figure Batman</p>
+                            </div>
+                        </a>
+                    </div><!-- product-container ends -->
+                    <div class="product-container">
+                        <a href="toys.html?category=action figures">
+                            <div class="imgdiv">
+                                <img src="img\action figures\spider-man_figure_with_spider_cycle-1.jpg" alt="Spider-Man Figure With Spider Cycle">
+                            </div>
+                            <div class="content">
+                                <p>Spider-Man Figure With Spider Cycle</p>
+                            </div>
+                        </a>
+                    </div><!-- product-container ends -->
+                    <div class="product-container">
+                        <a href="toys.html?category=action figures">
+                            <div class="imgdiv">
+                                <img src="img\action figures\toy_story_woody_figure-1.jpg" alt="Toy Story Woody Figure">
+                            </div>
+                            <div class="content">
+                                <p>Toy Story Woody Figure</p>
+                            </div>
+                        </a>
+                    </div><!-- product-container ends -->
+                </div><!-- d-flex ends -->
+            </div><!-- div4 ends -->
+        </div>
+        <footer>
+            <center>
+                <h4>Best Brands</h4>
+                <div>
+                    <img src="img/turbo-s.png" width="90" height="80" alt="Turbo-S">
+                    <img src="img/marvel.png" width="80" height="70" alt="Marvel">
+                    <img src="img/simba.png" width="80" height="40" alt="Simba">
+                    <img src="img/nerf.png" width="90" height="60" alt="Nerf">
+                    <img src="img/barbie.png" width="80" height="40" alt="Barbie">
+                    <img src="img/thomas and friends.png" width="70" height="40" alt="Thomas & Friends">
+                    <img src="img/babyhug.jpg" width="80" height="40" alt="Babyhug">
+                    <img src="img/carter's.jpg" width="100" height="40" alt="Carter's">
+                    <img src="img/babyoye.png" width="80" height="30" alt="Babyoye">
+                    <img src="img/cucumber.png" width="150" height="60" alt="Cucumber">
+                    <img src="img/beebay.png" width="110" height="50" alt="Beebay">
+                    <img src="img/life.png" width="110" height="60" alt="Life">
+                    <img src="img/tiny girl.png" width="100" height="30" alt="Tiny Girl">
+                    <img src="img/tommy hilfiger.jpg" width="80" height="60" alt="Tommy Hilfiger">
+                </div>
+                <h4>Customer Care</h4>
+                <div>
+                    <i class="fas fa-phone"> 6486-249584</i>
+                    <i class="fas fa-mobile-alt"> 9484854657</i>
+                    <i class="far fa-envelope"> care@kidsstore.in</i>
+                </div>
+            </center>
+        </footer>
+    </body>
+</html>

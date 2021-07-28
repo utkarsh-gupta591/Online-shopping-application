@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kids Store</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/all.css">
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/initializeClothes.js"></script>
+        <style>
+            .card
+            {
+                float:left;
+                margin:10px;
+                width:250px;
+            }
+            .card-body
+            {
+                padding-top:12px;
+                padding-bottom:12px;
+            }
+            .card-body p
+            {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size:14px;
+                height:60px;
+                margin-bottom:6px;
+            }
+            .responsive
+            {
+                width:100%;
+                height:auto;
+            }
+            .navbar
+            {
+                position:fixed;
+                width:100%;
+                top:0;
+                z-index:1;
+            }
+            #userNavigation ul
+            {
+                list-style:none;
+            }
+            #userNavigation ul li
+            {
+                float:right;
+                padding-left:5px;
+                padding-right:5px;
+                padding-top:10px;
+                padding-bottom:10px;
+            }
+            #userNavigation ul li a
+            {
+                text-decoration:none;
+                color:white;
+            }
+            #userNavigation .button {
+                background-color: #4d88ff;
+                border: none;
+                color: white;
+                padding-top: 4px;
+                padding-bottom: 4px;
+                padding-left: 12px;
+                padding-right: 12px;
+                text-align: center;
+                display: inline-block;
+                font-size: 1rem;
+                cursor: pointer;
+                border-radius:4px;
+            }
+            #websiteName
+            {
+                font-size:26px;
+                font-family:"Comic Sans MS", cursive, sans-serif;
+                font-weight:bold;
+                color:#6699ff;
+            }
+            @media only screen and (max-width:992px)
+            {
+                #websiteName
+                {
+                    margin-left: 8px;
+                    margin-right:auto;
+                }
+            }
+            body
+            {
+                background-color:white;
+            }
+            #content
+            {
+                margin-top:70px;
+                width:100%;
+            }
+            #mainDiv
+            {
+                box-shadow: 0px 0px 6px 3px #ccc;
+                background-color:white;
+                width: 75%;
+                padding:25px;
+            }
+            .clearfix::after {
+                overflow:auto;
+            }
+            #sidebar
+            {
+                box-shadow: 0px 0px 6px 3px #ccc;
+                width:18%;
+                margin-left:3%;
+                margin-right:16px;
+                padding:30px;
+            }
+            #sidebar ul
+            {
+                border:none;
+                list-style:none;
+                padding:5px;
+            }
+            #sidebar ul li
+            {
+                padding:5px;
+            }
+            #sidebar ul li a
+            {
+                text-decoration:none;
+                color:black;
+                font-size:18px;
+            }
+            footer
+            {
+                background-color:#2952a3;
+                padding-top:10px;
+                padding-bottom:20px;
+                color:white;
+            }
+            footer div img
+            {
+                margin-left:4px;
+                margin-right:4px;
+                margin-top:3px;
+                margin-bottom:3px;
+            }
+            footer div i
+            {
+                margin:20px;
+            }
+            @media screen and (max-width: 800px) {
+                #sidebar
+                {
+                    display:none;
+                }
+                #mainDiv
+                {
+                    width:100%;
+                }
+            }
+            @media screen and (max-width:480px)
+            {
+                #mainDiv
+                {
+                    padding-left:5px;
+                    padding-right:5px;
+                    width:100%;
+                }
+                .card
+                {
+                    width: 50%;
+                    margin:0;
+                }
+                .card-body p
+                {
+                    height:100px;
+                    margin-bottom:6px;
+                }
+                #websiteName
+                {
+                    font-size:22px;
+                }
+                .navbar
+                {
+                    padding-left:8px;
+                }
+            }
+        </style>
+        <script>
+            window.onload = function () {
+                if (window.innerWidth <= 567)
+                {
+                    var viewCartButton = document.getElementById("viewCartButton");
+                    viewCartButton.classList.remove("button");
+                    viewCartButton.classList.add("nav-link");
+                    viewCartButton.parentNode.classList.add("nav-item");
+                    var navbarNav = document.getElementsByClassName("navbar-nav")[0];
+                    var dropdownDivider = document.getElementsByClassName("dropdown-divider")[0];
+                    navbarNav.insertBefore(viewCartButton.parentNode, dropdownDivider);/*by using this method we are moving viewCartButton with li*/
+                    document.getElementById("sidebar").style.display = "none";
+                    document.getElementById("content").classList.remove("row");
+                }
+                if (window.innerWidth > 480 && window.innerWidth < 800)
+                {
+                    document.getElementById("sidebar").style.display = "none";
+                    document.getElementById("content").classList.remove("row");
+                }
+                if (window.innerWidth > 800)
+                {
+                    document.getElementById("sidebar").style.display = "inline-block";
+                    document.getElementById("content").classList.add("row");
+                }
+            };
+            window.onresize = function () {
+                if (window.innerWidth <= 480)
+                {
+                    var viewCartButton = document.getElementById("viewCartButton");
+                    viewCartButton.classList.remove("button");
+                    viewCartButton.classList.add("nav-link");
+                    viewCartButton.parentNode.classList.add("nav-item");
+                    var navbarNav = document.getElementsByClassName("navbar-nav")[0];
+                    var dropdownDivider = document.getElementsByClassName("dropdown-divider")[0];
+                    navbarNav.insertBefore(viewCartButton.parentNode, dropdownDivider);
+                    document.getElementById("sidebar").style.display = "none";
+                    document.getElementById("content").classList.remove("row");
+                }
+                if (window.innerWidth > 480)
+                {
+                    var viewCartButton = document.getElementById("viewCartButton");
+                    var userNavigation = document.getElementById("userNavigation");
+                    viewCartButton.parentNode.classList.remove("nav-item");
+                    viewCartButton.classList.remove("nav-link");
+                    viewCartButton.classList.add("button");
+                    userNavigation.children[0].appendChild(viewCartButton.parentNode);/*by using this method we are moving viewCartButton with li*/
+                }
+                if (window.innerWidth > 480 && window.innerWidth < 800)
+                {
+                    document.getElementById("sidebar").style.display = "none";
+                    document.getElementById("content").classList.remove("row");
+                }
+                if (window.innerWidth > 800)
+                {
+                    document.getElementById("sidebar").style.display = "inline-block";
+                    document.getElementById("content").classList.add("row");
+                }
+            };
+        </script>
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#e6e6e6;">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a id="websiteName" class="navbar-brand">KIDS STORE</a>
+            <div class="collapse navbar-collapse" id="navbarNav" style="background-color:#e6e6e6;">
+                <ul class="navbar-nav">
+
+                    <div class="dropdown-divider"></div>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="dropdown_target" href="#">Boys</a>
+                        <div class="dropdown-menu" style="background-color:#f2f2f2;" aria-labelledby="dropdown_target">
+                            <a class="dropdown-item" href="boysclothes.html?category=t-shirts">T-Shirts</a>
+                            <a class="dropdown-item" href="boysclothes.html?category=polo shirts">Polo Shirts</a>
+                            <a class="dropdown-item" href="boysclothes.html?category=shorts">Shorts</a>
+                            <a class="dropdown-item" href="boysclothes.html?category=nightwear">Nightwear</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="dropdown_target" href="#">Girls</a>
+                        <div class="dropdown-menu" style="background-color:#f2f2f2;" aria-labelledby="dropdown_target">
+                            <a class="dropdown-item" href="girlsclothes.html?category=girls frocks">Frocks</a>
+                            <a class="dropdown-item" href="girlsclothes.html?category=girls tops">Tops</a>
+                            <a class="dropdown-item" href="girlsclothes.html?category=girls jeans">Jeans</a>
+                            <a class="dropdown-item" href="girlsclothes.html?category=girls winterwear">Winterwear</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="dropdown_target" href="#">Toys</a>
+                        <div class="dropdown-menu" style="background-color:#f2f2f2;" aria-labelledby="dropdown_target">
+                            <a class="dropdown-item" href="toys.html?category=action figures">Action Figures</a>
+                            <a class="dropdown-item" href="toys.html?category=dolls, playsets and accessories">Dolls, Playsets & Accessories</a>
+                            <a class="dropdown-item" href="toys.html?category=guns and bullets">Guns and Bullets</a>
+                            <a class="dropdown-item" href="toys.html?category=cars and tracks">Cars & Tracks</a>
+                        </div>
+                    </li>
+                </ul>
+
+            </div><!-- navbarNav ends -->
+            <div id="userNavigation">
+                <ul>
+                    <li style="display:block;"><a href="viewcart.html" id="viewCartButton" class="button">View Cart</a></li>
+                </ul>
+            </div>
+        </nav>
+        <br>
+        <div id="content" class="row">
+            <div id="sidebar">
+                <h4>FILTER BY</h4>
+                <h5>Category</h5>
+                <ul>
+                    <li>
+                        <a href="boysclothes.html?category=t-shirts">T-Shirts</a>
+                    </li>
+                    <li>
+                        <a href="boysclothes.html?category=polo shirts">Polo Shirts</a>
+                    </li>
+                    <li>
+                        <a href="boysclothes.html?category=shorts">Shorts</a>
+                    </li>
+                    <li>
+                        <a href="boysclothes.html?category=nightwear">Nightwear</a>
+                    </li>
+                </ul>
+            </div><!-- sidebar ends -->
+            <div id="mainDiv" class="clearfix">
+                <div class="text-center">
+                    <h4 id="title" style="text-transform:capitalize;"></h4>
+                </div>
+            </div>
+
+        </div><!-- /.row ends -->
+        <br>
+        <footer>
+            <center>
+                <h4>Best Brands</h4>
+                <div>
+                    <img src="img/turbo-s.png" width="90" height="80" alt="Turbo-S">
+                    <img src="img/marvel.png" width="80" height="70" alt="Marvel">
+                    <img src="img/simba.png" width="80" height="40" alt="Simba">
+                    <img src="img/nerf.png" width="90" height="60" alt="Nerf">
+                    <img src="img/barbie.png" width="80" height="40" alt="Barbie">
+                    <img src="img/thomas and friends.png" width="70" height="40" alt="Thomas & Friends">
+                    <img src="img/babyhug.jpg" width="80" height="40" alt="Babyhug">
+                    <img src="img/carter's.jpg" width="100" height="40" alt="Carter's">
+                    <img src="img/babyoye.png" width="80" height="30" alt="Babyoye">
+                    <img src="img/cucumber.png" width="150" height="60" alt="Cucumber">
+                    <img src="img/beebay.png" width="110" height="50" alt="Beebay">
+                    <img src="img/life.png" width="110" height="60" alt="Life">
+                    <img src="img/tiny girl.png" width="100" height="30" alt="Tiny Girl">
+                    <img src="img/tommy hilfiger.jpg" width="80" height="60" alt="Tommy Hilfiger">
+                </div>
+                <h4>Customer Care</h4>
+                <div>
+                    <i class="fas fa-phone"> 6486-249584</i>
+                    <i class="fas fa-mobile-alt"> 9484854657</i>
+                    <i class="far fa-envelope"> care@kidsstore.in</i>
+                </div>
+            </center>
+        </footer>
+        <script>
+            const queryString = window.location.search;
+                    const urlParams = new URLSearchParams(queryString);
+                    const category = urlParams.get('category');
+                    var productName = "";
+            document.getElementById("title").innerHTML = category;
+            for (i = 0; i < clothes.length; i++)
+            {
+                cloth = clothes[i];// cloth and clothes variables are declared in initializeClothes.js
+                if (cloth.category != category) {
+                    continue;
+                }
+                var productName = cloth.name;
+                var productCard = document.createElement("div");
+                productCard.setAttribute("id", productName);
+                productCard.classList.add("card");
+                var image = document.createElement("IMG");
+                image.setAttribute("src", cloth.imgSrcs[0]);
+                image.setAttribute("class", "responsive");// very important
+                productCard.appendChild(image);
+                var cardBody = document.createElement("div");
+                cardBody.classList.add("card-body");
+                var productTitle = document.createElement("p");
+                productTitle.innerHTML = productName;
+                var price = document.createElement("h6");
+                price.innerHTML = "&#8377 " + cloth.price;
+                cardBody.appendChild(productTitle);
+                cardBody.appendChild(price);
+                productCard.appendChild(cardBody);
+                var productLink = document.createElement("a");
+                productLink.setAttribute("style", "color: black;");
+                productLink.setAttribute("href", "displayproduct.html?productName=" + encodeURIComponent(productName));
+                productLink.appendChild(productCard);
+                document.getElementById("mainDiv").appendChild(productLink);
+            }
+        </script>
+    </body>
+</html>

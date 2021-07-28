@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Toy Store</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/all.css"><!--font-awsome css-->
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/initializeToys.js"></script>
+        <script type="text/javascript" src="js/initializeClothes.js"></script>
+        <style>
+            .navbar
+            {
+                position:fixed;
+                width:100%;
+                top:0;
+                z-index:100;
+            }
+            #mainDiv
+            {
+                margin-top:70px;
+            }
+            #userNavigation ul
+            {
+                list-style:none;
+            }
+            #userNavigation ul li
+            {
+                float:right;
+                padding-left:5px;
+                padding-right:5px;
+                padding-top:10px;
+                padding-bottom:10px;
+            }
+            #userNavigation ul li a
+            {
+                text-decoration:none;
+                color:white;
+            }
+            #userNavigation .button {
+                background-color: #4d88ff;
+                border: none;
+                color: white;
+                padding-top: 4px;
+                padding-bottom: 4px;
+                padding-left: 12px;
+                padding-right: 12px;
+                text-align: center;
+                display: inline-block;
+                font-size: 1rem;
+                cursor: pointer;
+                border-radius:4px;
+            }
+            #websiteName
+            {
+                font-size:26px;
+                font-family:"Comic Sans MS", cursive, sans-serif;
+                font-weight:bold;
+                color:#6699ff;
+            }
+            footer
+            {
+                background-color:#2952a3;
+                padding-top:10px;
+                padding-bottom:20px;
+                color:white;
+            }
+            footer div img
+            {
+                margin-left:4px;
+                margin-right:4px;
+                margin-top:3px;
+                margin-bottom:3px;
+            }
+            footer div i
+            {
+                margin:20px;
+            }
+            @media only screen and (max-width:992px)
+            {
+                #websiteName
+                {
+                    margin-left: 8px;
+                    margin-right:auto;
+                }
+            }
+            .responsive
+            {
+                width:100%;
+                height:auto;
+            }
+            #mainDiv
+            {
+                background-color:white;
+                box-shadow: 0px 0px 4px 4px #ccc;
+                padding-left:2%;
+                padding-right:2%;
+                padding-top:15px;
+                padding-bottom:15px;
+            }
+            .clearfix::after {
+                overflow:auto;
+            }
+            #productImagesDisplayDiv
+            {
+                width:100px;
+                padding-left:10px;
+                padding-right:10px;
+                float:left;
+            }
+            .pimg
+            {
+                width:100%;
+                height:auto;
+                margin-top:10px;
+                margin-bottom:10px;
+            }
+            #productImage
+            {
+                width:100%;
+                height:auto;
+            }
+            #productImageDiv
+            {
+                border:none;
+                width:36%;
+                float:left;
+            }
+            #productDetailsDiv
+            {
+                border:none;
+                padding:20px;
+                float:left;
+                width:50%;
+            }
+            .carousel-indicators li{
+                background: blue none no-repeat fixed 0 0;
+                border: none;
+                opacity: 0.5;
+                width: 30px;
+            }
+            /*active slide indicator */
+            .carousel-indicators .active {
+                background: dark-blue none no-repeat fixed 0 0;
+            }
+
+            .carousel-item img
+            {
+                margin-left:auto;
+                margin-right:auto;
+                display:block;
+            }
+            @media only screen and (max-width: 992px) {
+                #productImageDiv
+                {
+                    width:36%;
+                }
+                #productImage
+                {
+                    width:100%;
+                    height:auto;
+                }
+                #productDetailsDiv
+                {
+                    width:45%;
+                }
+            }
+            @media only screen and (max-width: 768px) {
+                #productImageDiv
+                {
+                    width:100%;
+                }
+                #productDetailsDiv
+                {
+                    padding:10px;
+                    width:100%;
+                }
+            }
+            @media only screen and (max-width: 480px) {
+                .carousel-item img
+                {
+                    width:100%;
+                    height:auto;
+                }
+                #websiteName
+                {
+                    font-size:22px;
+                }
+                .navbar
+                {
+                    padding-left:8px;
+                }
+                #title
+                {
+                    font-size:22px;
+                }
+                #price
+                {
+                    font-size:22px;
+                }
+            }
+        </style>
+        <script>
+            window.onload = function () {
+                if (window.innerWidth <= 768)
+                {
+                    document.getElementById("productImagesDisplayDiv").style.display = "none";
+                    document.getElementById("productImage").style.display = "none";
+                    document.getElementById("productImagesCarousel").style.display = "block";
+                }
+                if (window.innerWidth <= 567)
+                {
+                    var viewCartButton = document.getElementById("viewCartButton");
+                    viewCartButton.classList.remove("button");
+                    viewCartButton.classList.add("nav-link");
+                    viewCartButton.parentNode.classList.add("nav-item");
+                    var navbarNav = document.getElementsByClassName("navbar-nav")[0];
+                    var dropdownDivider = document.getElementsByClassName("dropdown-divider")[0];
+                    navbarNav.insertBefore(viewCartButton.parentNode, dropdownDivider);
+                }
+            };
+            window.onresize = function () {
+                if (window.innerWidth <= 567)
+                {
+                    var viewCartButton = document.getElementById("viewCartButton");
+                    viewCartButton.classList.remove("button");
+                    viewCartButton.classList.add("nav-link");
+                    viewCartButton.parentNode.classList.add("nav-item");
+                    var navbarNav = document.getElementsByClassName("navbar-nav")[0];
+                    var dropdownDivider = document.getElementsByClassName("dropdown-divider")[0];
+                    navbarNav.insertBefore(viewCartButton.parentNode, dropdownDivider);
+                }
+                if (window.innerWidth > 567)
+                {
+                    var viewCartButton = document.getElementById("viewCartButton");
+                    var userNavigation = document.getElementById("userNavigation");
+                    viewCartButton.parentNode.classList.remove("nav-item");
+                    viewCartButton.classList.remove("nav-link");
+                    viewCartButton.classList.add("button");
+                    userNavigation.children[0].appendChild(viewCartButton.parentNode);/*by using this method we are moving viewCartButton with li*/
+                }
+                if (window.innerWidth <= 768)
+                {
+                    document.getElementById("productImagesDisplayDiv").style.display = "none";
+                    document.getElementById("productImage").style.display = "none";
+                    document.getElementById("productImagesCarousel").style.display = "block";
+                }
+                if (window.innerWidth > 768)
+                {
+                    document.getElementById("productImagesDisplayDiv").style.display = "block";
+                    document.getElementById("productImage").style.display = "block";
+                    document.getElementById("productImagesCarousel").style.display = "none";
+                }
+            };
+            function changeImage(element)
+            {
+                document.getElementById("productImage").src = element.src;
+            }
+        </script>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#e6e6e6;">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a id="websiteName" class="navbar-brand">KIDS STORE</a>
+            <div class="collapse navbar-collapse" id="navbarNav" style="background-color:#e6e6e6;">
+                <ul class="navbar-nav">
+
+                    <div class="dropdown-divider"></div>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="dropdown_target" href="#">Boys</a>
+                        <div class="dropdown-menu" style="background-color:#f2f2f2;" aria-labelledby="dropdown_target">
+                            <a class="dropdown-item" href="boysclothes.html?category=t-shirts">T-Shirts</a>
+                            <a class="dropdown-item" href="boysclothes.html?category=polo shirts">Polo Shirts</a>
+                            <a class="dropdown-item" href="boysclothes.html?category=shorts">Shorts</a>
+                            <a class="dropdown-item" href="boysclothes.html?category=nightwear">Nightwear</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="dropdown_target" href="#">Girls</a>
+                        <div class="dropdown-menu" style="background-color:#f2f2f2;" aria-labelledby="dropdown_target">
+                            <a class="dropdown-item" href="girlsclothes.html?category=girls frocks">Frocks</a>
+                            <a class="dropdown-item" href="girlsclothes.html?category=girls tops">Tops</a>
+                            <a class="dropdown-item" href="girlsclothes.html?category=girls jeans">Jeans</a>
+                            <a class="dropdown-item" href="girlsclothes.html?category=girls winterwear">Winterwear</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="dropdown_target" href="#">Toys</a>
+                        <div class="dropdown-menu" style="background-color:#f2f2f2;" aria-labelledby="dropdown_target">
+                            <a class="dropdown-item" href="toys.html?category=action figures">Action Figures</a>
+                            <a class="dropdown-item" href="toys.html?category=dolls, playsets and accessories">Dolls, Playsets & Accessories</a>
+                            <a class="dropdown-item" href="toys.html?category=guns and bullets">Guns and Bullets</a>
+                            <a class="dropdown-item" href="toys.html?category=cars and tracks">Cars & Tracks</a>
+                        </div>
+                    </li>
+                </ul>
+            </div><!-- navbarNav ends -->
+            <div id="userNavigation">
+                <ul>
+                    <li style="display:block;"><a href="viewcart.html" id="viewCartButton" class="button">View Cart</a></li>
+                </ul>
+            </div>
+        </nav>
+        <br>
+
+        <div id="mainDiv" class="clearfix">
+
+            <div id="productImagesDisplayDiv">
+                <img src="" class="pimg" onclick="changeImage(this)">
+            </div><!-- productImagesDisplayDiv ends -->
+
+            <div id="productImageDiv">
+                <img src="" id="productImage">
+                <div id="productImagesCarousel" class="carousel slide" style="display:none;" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#productImagesCarousel" data-slide-to="0"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item">
+                            <img class="d-block" src="">
+                        </div>
+                    </div><!-- carousel-inner ends-->
+                    <a class="carousel-control-prev" href="#productImagesCarousel" role="button" data-slide="prev">
+                        <i class="fa fa-angle-left fa-2x" style="color:blue;" aria-hidden="true"></i>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#productImagesCarousel" role="button" data-slide="next">
+                        <i class="fa fa-angle-right fa-2x" style="color:blue;" aria-hidden="true"></i>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div><!-- carousel ends -->
+            </div><!-- productImageDiv ends -->
+
+            <div id="productDetailsDiv">
+                <table class="table">
+                    <tbody>
+                        <tr style="border-top:hidden;">
+                            <td><h3 id="title" style="text-transform: uppercase"></h3></td>
+                        </tr><!-- row1 ends -->
+                        <tr>
+                            <td><h3 id="price"></h3></td>
+                        </tr><!-- row2 ends -->
+                        <tr>
+                            <td><h6>Quantity</h6><select id="quantity">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                            </td>
+                        </tr><!-- row3 ends -->
+                        <tr>
+                            <td>
+                                <i class="far fa-check-circle" style="color:green;display:none;margin-bottom:6px;" id="addedToCartMessage"> Added to cart</i>
+                                <button type="button" class="btn btn-danger" id="addToCartButton" onclick="addItemToCart()">Add to cart</button>
+                                <a href="viewcart.html" class="btn btn-danger" id="goToCartButton" style="display:none">Go to cart</a>
+                            </td>
+                        </tr><!-- row4 ends -->
+                    </tbody>
+                </table>
+
+            </div><!-- productDetailsDiv ends -->
+
+        </div><!-- main div ends -->
+        <br>
+        <footer>
+            <center>
+                <h4>Best Brands</h4>
+                <div>
+                    <img src="img/turbo-s.png" width="90" height="80" alt="Turbo-S">
+                    <img src="img/marvel.png" width="80" height="70" alt="Marvel">
+                    <img src="img/simba.png" width="80" height="40" alt="Simba">
+                    <img src="img/nerf.png" width="90" height="60" alt="Nerf">
+                    <img src="img/barbie.png" width="80" height="40" alt="Barbie">
+                    <img src="img/thomas and friends.png" width="70" height="40" alt="Thomas & Friends">
+                    <img src="img/babyhug.jpg" width="80" height="40" alt="Babyhug">
+                    <img src="img/carter's.jpg" width="100" height="40" alt="Carter's">
+                    <img src="img/babyoye.png" width="80" height="30" alt="Babyoye">
+                    <img src="img/cucumber.png" width="150" height="60" alt="Cucumber">
+                    <img src="img/beebay.png" width="110" height="50" alt="Beebay">
+                    <img src="img/life.png" width="110" height="60" alt="Life">
+                    <img src="img/tiny girl.png" width="100" height="30" alt="Tiny Girl">
+                    <img src="img/tommy hilfiger.jpg" width="80" height="60" alt="Tommy Hilfiger">
+                </div>
+                <h4>Customer Care</h4>
+                <div>
+                    <i class="fas fa-phone"> 6486-249584</i>
+                    <i class="fas fa-mobile-alt"> 9484854657</i>
+                    <i class="far fa-envelope"> care@kidsstore.in</i>
+                </div>
+            </center>
+        </footer>
+        <script>
+            const queryString = window.location.search;
+                    const urlParams = new URLSearchParams(queryString);
+                    var productName = urlParams.get('productName');
+            var product;
+            var products = [];
+            for (i = 0; i < toys.length; i++)
+            {
+                if (productName == toys[i].name)
+                {
+                    product = toys[i];
+                }
+            }
+            for (i = 0; i < clothes.length; i++)
+            {
+                if (productName == clothes[i].name)
+                {
+                    product = clothes[i];
+                }
+            }
+            // code to add clothes, toys to cart (database)
+            var productPrice = product.price;
+            var imgsrc = product.imgSrcs[0];
+            document.getElementById("productImage").setAttribute("src", imgsrc);
+            document.getElementById("title").innerHTML = productName;
+            document.getElementById("price").innerHTML = "&#8377 " + productPrice;
+
+            // check if the product already exsist in cart
+            var db = openDatabase('kidsstoredatabase', '1.0', 'Kids clothes and toys store DB', 2 * 1024 * 1024);
+            db.transaction(function (tx) {
+                tx.executeSql('select * from cart where productName=?', [productName], function (tx, results) {
+                    var len = results.rows.length;
+                    if (len != 0)
+                    {
+                        document.getElementById("addedToCartMessage").style.display = "block";
+                        document.getElementById("addToCartButton").style.display = "none";
+                        document.getElementById("goToCartButton").style.display = "inline-block";
+                    }
+                }, function (sqlTransaction, sqlError) {
+                });
+            }, null);
+
+            //code to add product to cart
+            function addItemToCart()
+            {
+
+                db.transaction(function (tx) {
+                    tx.executeSql('SELECT * FROM CART', [], function (tx, results) {
+                        var len = results.rows.length, i;
+                        var lastRecordId = 0;
+                        if (len != 0)
+                            lastRecordId = results.rows.item(len - 1).id;
+                        insertRecord(lastRecordId);
+                    }, function (sqlTransaction, sqlError) {
+                        if (sqlError.code === sqlError.SYNTAX_ERR)
+                        {
+                            // table does not exist
+                            var lastRecordId = 0;
+                            insertRecord(lastRecordId);
+                        }
+                    });
+                }, null);
+                function insertRecord(lastRecordId)
+                {
+                    var productQuantity = document.getElementById("quantity").value;
+                    var id = lastRecordId + 1;
+                    db.transaction(function (tx) {
+                        tx.executeSql('CREATE TABLE IF NOT EXISTS CART (id int unique, productName text unique, productPrice int, productQuantity int)');
+                        tx.executeSql('INSERT INTO CART VALUES (?,?,?,?)', [id, productName, productPrice, productQuantity], function (tx, result) {
+                            document.getElementById("addedToCartMessage").style.display = "block";
+                            document.getElementById("addToCartButton").style.display = "none";
+                            document.getElementById("goToCartButton").style.display = "inline-block";
+                        }, function (tx, error) {
+                        });
+                    });
+
+                }// function insertRecord() ends
+            } // addItemToCart() ends
+
+            var productImage1 = document.getElementsByClassName("pimg")[0];
+            productImage1.src = product.imgSrcs[0];
+            var carouselItem1 = document.getElementsByClassName("carousel-item")[0];
+            var carouselIndicators = document.getElementsByClassName("carousel-indicators")[0];//<ul>
+            var carouselIndicator1 = carouselIndicators.children[0];
+            carouselItem1.children[0].src = product.imgSrcs[0];//children[0]-img
+            for (i = 1; i < product.imgSrcs.length; i++)
+            {
+                var productImage = productImage1.cloneNode(true);
+                productImage.src = product.imgSrcs[i];
+                document.getElementById("productImagesDisplayDiv").appendChild(productImage);
+
+                var carouselItem = carouselItem1.cloneNode(true);//<img>
+                carouselItem.children[0].src = product.imgSrcs[i];
+                document.getElementsByClassName("carousel-inner")[0].appendChild(carouselItem);
+                var carouselIndicator = carouselIndicator1.cloneNode(true);//<li>
+                carouselIndicator.setAttribute("data-slide-to", i);
+                carouselIndicators.appendChild(carouselIndicator);
+            }
+            carouselIndicator1.classList.add("active");//<li>
+            carouselItem1.classList.add("active");//<div><img>
+        </script>
+    </body>
+</html>
